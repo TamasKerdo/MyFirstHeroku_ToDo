@@ -1,0 +1,93 @@
+﻿@model BankOfSimba.ViewModels.AccountViewModel
+
+    <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        .King 
+        {
+            background-color :gold;
+        }
+        .NotKing {
+            background-color: khaki;
+        }
+
+        table, td {
+            border: 1px solid black;
+            table-layout: fixed;
+        }
+
+        td {
+            padding: 5px;
+            text-align: left;
+            width :  200px;
+        }
+        form {
+            padding: 10px;
+            text-align: left;
+            width: 190px;
+            border: 5px solid black;
+            table-layout: fixed;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="/add" method="post">
+        Name:
+        <br />
+        <input type="text" name="Name" value="">
+        <br />
+        Balance:
+        <input type="number" name="Balance" value="">
+        AnimalType:
+        <input type="text" name="AnimalType" value="">
+        <br />
+        <br />
+        <input type="submit" value="Add new Animal">
+        <br />
+    </form>
+
+    <form action="/modify" method="post">
+        AnimalInTheTable:
+        <br />
+        <input type="number" name="AnimalInTheTable" value="">
+        <br />
+        <br />
+        <input type="submit" value="Increase the Balance">
+        <br />
+    </form>
+
+    @{
+        var counter = 0;
+        @foreach (var account in Model.BankAccountList)
+        {
+            if (@account.AnimalType == "King")
+            {
+                
+                <table style="width:800px">
+                    <tr class="King">
+                        <td>@counter</td>
+                        <td>@account.Name</td>
+                        <td>@account.Balance.ToString("0.00") zebra</td>                        
+                        <td>@account.AnimalType</td>
+                    </tr>                    
+                </table>
+            }
+            else
+            {
+                <table style="width:800px">
+                    <tr class="NotKing">
+                        <td>@counter</td>
+                        <td>@account.Name</td>
+                        <td>@account.Balance.ToString("0.00") zebra</td>
+                        <td>@account.AnimalType</td>
+                    </tr>
+                </table>
+            }
+            counter++;
+        }
+    }
+  </body>
+</html>
+
+
