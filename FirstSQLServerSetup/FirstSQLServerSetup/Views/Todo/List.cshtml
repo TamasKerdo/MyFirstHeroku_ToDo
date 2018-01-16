@@ -1,0 +1,29 @@
+﻿@model System.Collections.Generic.List<FirstSQLServerSetup.Models.ToDo>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>hhhhhhheeeeeeeeeeellllllllllooooooo</title>
+</head>
+<body>
+
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>What To Do</td>
+            <td>Is it Urgent?</td>
+            <td>Done?</td>
+            <td>Delete</td>
+            <td>Edit</td>
+        </tr>
+        @foreach (var todos in Model)
+        {
+            <tr>
+                <td>@todos.Id</td>
+                <td>@todos.Title</td>
+                <td>@todos.IsUrgent</td>
+                <td>@todos.IsDone</td>
+                <td><a href="/delete?Id=@todos.Id">Delete</a></td>
+                <td><a href="/edit/@todos.Id">Edit</a></td>
+            </tr>
+        }
+    </table>
+    </body>
